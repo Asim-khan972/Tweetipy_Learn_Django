@@ -54,7 +54,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Log them in immediately
+            login(request, user)  
             return redirect('tweet_list')
     else:
         form = UserCreationForm()

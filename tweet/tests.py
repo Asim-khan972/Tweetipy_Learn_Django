@@ -141,4 +141,15 @@ class TweetModelTest(TestCase):
         self.assertTemplateUsed(response, 'registration/password_reset_complete.html')
         self.assertContains(response, 'Your password has been reset successfully.')
 
-    
+    def test_password_reset_confirm_view(self):
+        response = self.client.get('/password_reset/confirm/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'registration/password_reset_confirm.html')
+        self.assertContains(response, 'Enter new password')
+
+    def test_password_reset_complete_view(self):
+        response = self.client.get('/password_reset/complete/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'registration/password_reset_complete.html')
+        self.assertContains(response, 'Your password has been reset successfully.')
+        
